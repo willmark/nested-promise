@@ -1,0 +1,37 @@
+{
+  "name": "nested-promise",
+  "version": "0.0.1",
+  "description": "Promise pattern for async tasks. Also handles nested tasks",
+  "homepage": "https://github.com/willmark/nested-promise",
+  "author": {
+    "name": "Mark Williams",
+    "email": "mark@togglebit.org",
+    "url": "http://togglebit.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/willmark/nested-promise.git"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "engine": {
+    "node": "0"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-preprocess": "~3.0.1",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-nodeunit": "~0.2.2"
+  },
+  "keywords": [
+    "promise",
+    "nested asychronous tasks",
+    "promise pattern",
+    "node.js promise"
+  ],
+  "readmeFilename": "README.md"
+}
