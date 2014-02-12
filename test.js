@@ -1,6 +1,6 @@
-promise = require("./index");
+var promise = require("./index");
 
-tasks = [ {
+var tasks = [ {
     name: "task1",
     visited: false 
 }, {
@@ -40,7 +40,7 @@ tasks = [ {
     }
 } ];
 
-taskLength = function(task) {
+var taskLength = function(task) {
     length = 0;
     for (var name in task) {
         if (task.hasOwnProperty(name)) {
@@ -50,7 +50,7 @@ taskLength = function(task) {
     return length;
 };
 
-asyncop = function(task, cb) {
+var asyncop = function(task, cb) {
     if (taskLength(task) > 2) {
         newTasks = [];
         for (var subtask in task) {
@@ -59,6 +59,7 @@ asyncop = function(task, cb) {
         }
         subtaskcomplete = function(task) {
             task.visited = true; 
+            console.log('subtask complete:',task[1].name);
         };
         subcomplete = function() {
             task.visited = true; 
@@ -71,7 +72,7 @@ asyncop = function(task, cb) {
     }
 };
 
-load = function(tasks, taskcomplete, end) {
+var load = function(tasks, taskcomplete, end) {
     TaskHandler = promise.TaskHandler;
     options = {
         task: tasks,
@@ -79,16 +80,18 @@ load = function(tasks, taskcomplete, end) {
         cbtaskcomplete: taskcomplete,
         cbend: end 
     };
-    th = Object.create(TaskHandler);
+    th = new TaskHandler();
     th.init(options);
 };
 
 exports.test1 = function(a) {
     a.expect(7);
     taskcomplete = function(result) {
+        console.log('task complete:',result[1].name);
         a.ok(result[0] && result[1].visited);
     };
     load(tasks, taskcomplete, function(result, err) {
+        console.log('all tasks complete');
         a.ok(tasks.length === 0); //all tasks should be poped off
         a.done();
     });
