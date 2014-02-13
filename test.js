@@ -41,7 +41,7 @@ var tasks = [ {
 } ];
 
 var taskLength = function(task) {
-    length = 0;
+    var length = 0;
     for (var name in task) {
         if (task.hasOwnProperty(name)) {
             length++;
@@ -52,16 +52,16 @@ var taskLength = function(task) {
 
 var asyncop = function(task, cb) {
     if (taskLength(task) > 2) {
-        newTasks = [];
+        var newTasks = [];
         for (var subtask in task) {
             if (subtask === "name" || subtask === "visited") continue;
             newTasks.push(task[subtask]);
         }
-        subtaskcomplete = function(task) {
+        var subtaskcomplete = function(task) {
             task.visited = true; 
             console.log('subtask complete:',task[1].name);
         };
-        subcomplete = function() {
+        var subcomplete = function() {
             task.visited = true; 
             cb(true, task);
         };
@@ -74,19 +74,19 @@ var asyncop = function(task, cb) {
 
 var load = function(tasks, taskcomplete, end) {
     TaskHandler = promise.TaskHandler;
-    options = {
+    var options = {
         task: tasks,
         asyncop: asyncop,
         cbtaskcomplete: taskcomplete,
         cbend: end 
     };
-    th = new TaskHandler();
+    var th = new TaskHandler();
     th.init(options);
 };
 
 exports.test1 = function(a) {
     a.expect(7);
-    taskcomplete = function(result) {
+    var taskcomplete = function(result) {
         console.log('task complete:',result[1].name);
         a.ok(result[0] && result[1].visited);
     };
