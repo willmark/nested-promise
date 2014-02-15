@@ -8,7 +8,7 @@ Promise pattern to handle multiple nested tasks
 ## Usage 
 
 ````
-    TaskHandler = promise.TaskHandler;
+    var TaskHandler = promise.TaskHandler;
     var options = {
         task: tasks,
         asyncop: asyncop,
