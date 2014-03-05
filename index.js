@@ -42,7 +42,7 @@ NestedPromise.prototype.operation = function(task, cbtaskcomplete) {
     //operations of embedded tasks
     var cbhand = function(self) {
         this.cb = function() {
-            self.taskHandler.cbtaskcomplete(arguments);
+            self.taskHandler.cbtaskcomplete.apply(this, arguments);
             var nextTask = self.taskHandler.task.shift();
             if (nextTask) {
                 self.resolve(nextTask, self.taskHandler.cbtaskcomplete);

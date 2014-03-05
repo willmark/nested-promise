@@ -57,9 +57,9 @@ var asyncop = function(task, cb) {
             if (subtask === "name" || subtask === "visited") continue;
             newTasks.push(task[subtask]);
         }
-        var subtaskcomplete = function(task) {
-            task.visited = true; 
-            console.log('subtask complete:',task[1].name);
+        var subtaskcomplete = function(result, task) {
+            task.visited = result; 
+            console.log('subtask complete:',task.name);
         };
         var subcomplete = function() {
             task.visited = true; 
@@ -86,9 +86,10 @@ var load = function(tasks, taskcomplete, end) {
 
 exports.test1 = function(a) {
     a.expect(7);
-    var taskcomplete = function(result) {
-        console.log('task complete:',result[1].name);
-        a.ok(result[0] && result[1].visited);
+    var taskcomplete = function(result, task) {
+        //console.log('task complete:',result[1].name);
+        console.log('task complete:',task.name);
+        a.ok(result && task.visited);
     };
     load(tasks, taskcomplete, function(result, err) {
         console.log('all tasks complete');
