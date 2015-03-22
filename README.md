@@ -1,9 +1,9 @@
 nested-promise
 ============
 
-> Stability - 2 Unstable
+> Stability - 3 Stable
 
-Promise pattern to handle multiple nested tasks
+Promise pattern to handle multiple nested tasks.  Plans to simplify the options are in the works.  For instance, perhaps just an array of task prototypes or objects is sufficient rather than including separate asyncop and other task handlers.
 
 ## Usage 
 
